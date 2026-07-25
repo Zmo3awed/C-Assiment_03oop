@@ -5,144 +5,148 @@ namespace tasks
    
     internal class Program
     {
-        static void print(string message)
+        static void Print(string message)
         {
 
             Console.WriteLine(message);
 
         }
-        //Q18 the function 
-        static void printfirest(string[] arr) {
-
-            if (arr == null || arr.Length == 0)
+        static void PrintTitle(string title)
+        {
+            Console.WriteLine($"Book Title : {title}");
+        }
+        static int AddBounce(int pages)
+        {
+            return pages += 50;
+        }
+        static void Welcome() {
+            Console.WriteLine("Welcome to the Library!");
+        }
+        static double ApplyDiscount(double[] prices)
+        {
+            return prices[0] -= 5;
+        }
+        static int AddBounceByRef( ref int pages)
+        {
+            return pages += 50;
+        }
+        static void ReplaceArray(ref double[] prices)
+        {
+             prices =new  double[] { 10.0, 12.5, 15.0 };
+            
+            
+        }
+        static bool TryGetPrice(string title, out double price)
+        {
+            if(title == null || title != "Clean Code")
             {
-                return;
+                price = 0;
+                return false;
             }
-            else
-                print(arr[0]);
+            price = 25.5;
+            return true;
+                
+
+
+
+        }
+        static void PrintInfo(string title, int pages = 300)
+        {
+            Console.WriteLine($"Book Title :  {title} numper of pages : {pages}");
+        }
+        static void PrintAllTitles(params string[] titles)
+        {
+            foreach (string title in titles) {
+
+                Console.WriteLine(title);
+
             }
-                static void Main(string[] args)
+        }
+
+        static void Main(string[] args)
                 {
+           
+            ////Q1
+            //double[] prices = { 25.5,40,45.25};
+            //Console.WriteLine(prices[1]);
+            ///***********************************************************/
+            ////Q2
+            //int[,] selfCopies = {
 
-            /* 
+            //    {3,5 },
+            //    {1,4 }
 
+            //     };
+            //Console.WriteLine(selfCopies[1,0]);
+            /************************************************************/
+            //Q3 
+            //Welcome();
 
-                     * NOOTE I Declared a print function just to make print easy instade of write console..... every time               */
-
-
-
-            //Q1
-            //string title = "Clean Code";
-            //string uppertitle = title.ToUpper();
-            //print(uppertitle);
-            //print(title);
-            /**************************************************************/
-            //Q2
-            //string s1 = "zyad";
-            //string s2 = "zyad";
-            //Console.WriteLine(object.ReferenceEquals(s1,s2));
-            /****************************************************************/
-            //Q3
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("Book Liest");
-            //print(sb.ToString());
-            //sb.Append(" - Updated");
-            //print(sb.ToString());
-            /*****************************************************************/
             //Q4
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("Book Liest");
-            //sb.Replace("Book Liest","Library");
-            //print(sb.ToString());
-            //Q5/6/7
-            //string title = "Clean Code";
-            //int pages = 464;
-            //Console.WriteLine("Book : " + title + "  Pages : " + pages);
-            //Console.WriteLine($"Book : {title}  Pages : {pages}");
-            //string sentence = string.Format("Book: {0}, Pages: {1}", title, pages);
-            /**********************************************************************/
-            //Q8/9
-            //int pages = 464;
-            //bool isAvailable = true;
-            //if (pages > 300)
-            //    print("Loong Book");
+
+            //PrintTitle("Clean Code");
+            /******************************************************/
+            //Q5
+
+            //int pages = 400;
+
+            //Console.WriteLine($"pages Befor call : {pages}");
+            //AddBounce(pages); // I expect to see the same value because it is value type and i passed prameter by value 
+            //Console.WriteLine($"pages After call : {pages}");
+            /*******************************************************************************************/
+            //Q6
+            //double[] prices = { 25.5, 40.0 };
+            //Console.WriteLine($"prices befor : {prices[0]}");
+            //ApplyDiscount(prices);
+            //Console.WriteLine($"prices after : {prices[0]}");
+            /****************************************************************************************/
+            //Q7 
+
+            //int pages = 400;
+
+            //Console.WriteLine($"pages Befor call : {pages}");
+            //AddBounceByRef(ref pages); // I expect to see deffrent value because we paased by ref so the variable it self will be passed 
+            //Console.WriteLine($"pages After call : {pages}");
+            /*****************************************************************************************/
+            //Q8 
+            //double[] prices = { 25.5, 40.0 };
+            //Console.WriteLine($"Arr befor calling : ");
+            //foreach (double pr in prices) { 
+            //Console.Write($"{pr} ");
+
+            //}
+            //ReplaceArray(ref prices);
+            //Console.WriteLine($"\nArr after calling : ");
+            //foreach (double pr in prices)
+            //{
+            //    Console.Write($"{pr} ");
+
+            //}
+            /****************************************************************************************/
+            //Q9
+            //bool thereprice = TryGetPrice("Clean Code", out double price);
+            //if (thereprice)
+            //{
+            //    Console.WriteLine($"Price is : {price}");
+
+            //}
             //else
-            //    print("Short Book");
-            //if (pages > 300 && isAvailable)
-            //    print("You Can Borrow it");
-            //else
-            //    print("not available to borrow");
-            /****************************************************************************/
-            //Q10 ---------------------------------------->>>> you need to keep ot deafult value is missd
-            //string title = "Refactoring";
-
-            //string result = title switch
             //{
-            //    "Clean Code" => "Great choice!",
-            //    "Refactoring" => "Nice pick!",
-            //    _ => "Never heard of it"
-            //};
-
-            //Console.WriteLine(result);
-            /*****************************************************************************/
-            //Q11 
-            //int pages = 464;
-            //string result = pages > 300 ? "Loong Book" : "Short Book";
-            //print(result);
-            /*****************************************************************************/
-            //Q12 / 13
-            //string[] books = { "Clean Code", "The Pragmatic Programmer", "Refactoring" };
-            //for (int i = 0; i < books.Length; i++)
-            //{
-
-
-            //    print($"{i} : {books[i]} \n");
-
+            //    Console.WriteLine("There is no price");
             //}
-            //int j = 0;
-            //while (j < books.Length)
-            //{
-            //    print($"{j} : {books[j]} \n");
-            //    j++;
-            //}
-            /*******************************************************************************/
-            //Q14 
-            //int j = 0;
-            //do
-            //{
-            //    print("Checking book... \n");
-            //    j++;
-            //} while (j<=2);
-            /*****************************************************************************/
-            //Q15 
-            //string[] books = { "Clean Code", "The Pragmatic Programmer", "Refactoring" };
-            //foreach (string book in books ) {
-            //    print($"{book}\n");
+            /******************************************************************************************/
+            //Q10/11
+            //PrintInfo("Clean Code ");
+            //PrintInfo("Clean Code ", 400);
+            //PrintInfo(pages:400,title:"Clean Code");
+            /******************************************************************************************/
+            //Q12
+            //PrintAllTitles("Clean Code", "The Pragmatic Programmer", "Design Patterns");
+           
 
-            //}
-            /*******************************************************************************/
-            //Q16  /17 
-            //string[] books = { "Clean Code", "The Pragmatic Programmer", "Refactoring" };
-            //for (int i = 0; i < books.Length; i++)
-            //{
-            //    if (books[i] == "Refactoring")
-            //        break;
-            //    print(books[i]);
-            //}
-            ////17
-            //for (int i = 0; i < books.Length; i++)
-            //{
-            //    if (books[i] == "The Pragmatic Programmer")
-            //        continue;
-            //    print(books[i]);
-            //}
-            //Q18
-            //string[] books = { "Clean Code", "The Pragmatic Programmer", "Refactoring" };
-            //printfirest(books);
-            //string[] b=null;
-            //printfirest(b);
-            //string[] c = { "" };
-            //printfirest(c);
+
+
+
 
 
 
