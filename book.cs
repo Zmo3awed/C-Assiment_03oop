@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace tasks
 {
-    public class book
+    internal class book
     {
-     public string title;
-     public int pages;
+        internal int copiesInStock = 5;
+        public string title;
+        public Genre genre;
     }
 }
